@@ -39,7 +39,7 @@ export class TransactionService extends ApiService {
     return this.get(`${ApiRoutes.Transactions.getCurrentMonthTransactionSummary}?userId=${userId}&currency=${currency}`);
   }
 
-  getCurrentMonthExpensesPerCategory(userId: string, currency: number): Observable<ExpensePerCategoryResponse> {
+  getCurrentMonthExpensesPerCategory(userId: string, currency: number): Observable<ExpensePerCategoryResponse[]> {
     return this.get(`${ApiRoutes.Transactions.getCurrentMonthExpensesPerCategory}?userId=${userId}&currency=${currency}`);
   }
 

@@ -4,7 +4,7 @@ import { Label, SingleDataSet } from 'ng2-charts';
 import { combineLatest, Observable } from 'rxjs';
 
 import {
-  ExpensePerCategoryItem,
+  ExpensePerCategoryResponse,
   ExpensesPerCategoryFacade,
   LanguageFacade,
   RouterService,
@@ -55,13 +55,13 @@ export class DashboardComponent implements OnInit {
 
     const expensesPerCategory$ = this.expensesPerCategoryFacade.expensesPerCategory$.pipe(filter((items) => items?.length > 0));
     this.expensesPerCategoryChartData$ = expensesPerCategory$.pipe(
-      map((expensesPerCategory: ExpensePerCategoryItem[]) =>
-        expensesPerCategory.map((expensePerCategory: ExpensePerCategoryItem) => expensePerCategory.amount)
+      map((expensesPerCategory: ExpensePerCategoryResponse[]) =>
+        expensesPerCategory.map((expensePerCategory: ExpensePerCategoryResponse) => expensePerCategory.amount)
       )
     );
     this.expensesPerCategoryChartTooltips$ = expensesPerCategory$.pipe(
-      map((expensesPerCategory: ExpensePerCategoryItem[]) =>
-        expensesPerCategory.map((expensePerCategory: ExpensePerCategoryItem) => expensePerCategory.formattedAmount)
+      map((expensesPerCategory: ExpensePerCategoryResponse[]) =>
+        expensesPerCategory.map((expensePerCategory: ExpensePerCategoryResponse) => expensePerCategory.formattedAmount)
       )
     );
     this.expensesPerCategoryChartLabels$ = combineLatest([expensesPerCategory$, this.languageFacade.currentLanguage$]).pipe(

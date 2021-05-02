@@ -1,7 +1,7 @@
-import { ExpensePerCategoryItem } from '../../contracts/transactions/expense-per-category-item';
+import { ExpensePerCategoryResponse } from '../../contracts/transactions/expense-per-category-response';
 
 export interface ExpensesPerCategoryStateModel {
-  expensesPerCategory: ExpensePerCategoryItem[];
+  expensesPerCategory: ExpensePerCategoryResponse[];
   isLoading: boolean;
   error: boolean;
 }

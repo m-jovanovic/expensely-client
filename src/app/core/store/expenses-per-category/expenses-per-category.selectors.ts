@@ -2,11 +2,11 @@ import { Selector } from '@ngxs/store';
 
 import { ExpensesPerCategoryState } from './expenses-per-category.state';
 import { ExpensesPerCategoryStateModel } from './expenses-per-category-state.model';
-import { ExpensePerCategoryItem } from '../../contracts/transactions/expense-per-category-item';
+import { ExpensePerCategoryResponse } from '../../contracts/transactions/expense-per-category-response';
 
 export class ExpensesPerCategorySelectors {
   @Selector([ExpensesPerCategoryState])
-  static getExpensesPerCategory(state: ExpensesPerCategoryStateModel): ExpensePerCategoryItem[] {
+  static getExpensesPerCategory(state: ExpensesPerCategoryStateModel): ExpensePerCategoryResponse[] {
     return state.expensesPerCategory;
   }
 

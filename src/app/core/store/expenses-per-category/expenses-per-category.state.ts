@@ -21,18 +21,15 @@ export class ExpensesPerCategoryState {
   constructor(private transactionService: TransactionService) {}
 
   @Action(LoadExpensesPerCategory)
-  loadExpensesPerCategory(
-    context: StateContext<ExpensesPerCategoryStateModel>,
-    action: LoadExpensesPerCategory
-  ): Observable<ExpensePerCategoryResponse> {
+  loadExpensesPerCategory(context: StateContext<ExpensesPerCategoryStateModel>, action: LoadExpensesPerCategory): Observable<any> {
     context.patchState({
       isLoading: true
     });
 
     return this.transactionService.getCurrentMonthExpensesPerCategory(action.userId, action.currency).pipe(
-      tap((response: ExpensePerCategoryResponse) => {
+      tap((response: ExpensePerCategoryResponse[]) => {
         context.patchState({
-          expensesPerCategory: response.items,
+          expensesPerCategory: response,
           isLoading: false,
           error: false
         });
