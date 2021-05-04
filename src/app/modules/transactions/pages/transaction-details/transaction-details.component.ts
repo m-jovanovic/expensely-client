@@ -12,13 +12,14 @@ import { RouterService, TransactionDetailsResponse, TransactionFacade } from '@e
 export class TransactionDetailsComponent implements OnInit {
   transaction$: Observable<TransactionDetailsResponse>;
   isLoading$: Observable<boolean>;
+  error$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute, private transactionFacade: TransactionFacade, private routerService: RouterService) {}
 
   ngOnInit(): void {
     this.transaction$ = this.transactionFacade.transactionDetails$;
-
     this.isLoading$ = this.transactionFacade.isLoading$;
+    this.error$ = this.transactionFacade.error$;
 
     const transactionId = this.route.snapshot.paramMap.get('id');
 

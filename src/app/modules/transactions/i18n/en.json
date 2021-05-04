@@ -23,6 +23,9 @@
       "category": "Category",
       "amount": "Amount",
       "occurredOn": "Occurred on"
+    },
+    "errors": {
+      "notFound": "The transaction you requested was not found."
     }
   },
   "create": {
