@@ -3,7 +3,8 @@
     transaction: transaction$ | async,
     categories: categories$ | async,
     currencies: currencies$ | async,
-    isLoading: isLoading$ | async
+    isLoading: isLoading$ | async,
+    error: error$ | async
   } as data"
 >
   <!-- Update transaction -->
@@ -160,6 +161,21 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Transaction not found -->
+  <div *ngIf="data.error" class="flex justify-center w-full relative">
+    <div *transloco="let t" class="bg-white shadow-lg rounded-lg w-full md:max-w-2xl divide-y divide-gray-200">
+      <div class="px-6 py-6 flex justify-between">
+        <h3 class="text-lg font-medium text-gray-700">{{ t('transactions.update.text.title') }}</h3>
+
+        <exp-return [returnUrl]="'/transactions'"></exp-return>
+      </div>
+
+      <div class="px-6 py-6">
+        <span>{{ t('transactions.update.errors.notFound') }}</span>
+      </div>
     </div>
   </div>
 

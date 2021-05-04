@@ -31,6 +31,7 @@ export class UpdateTransactionComponent implements OnInit {
   categories$: Observable<CategoryResponse[]>;
   currencies$: Observable<UserCurrencyResponse[]>;
   isLoading$: Observable<boolean>;
+  error$: Observable<boolean>;
   submitted = false;
 
   constructor(
@@ -87,6 +88,8 @@ export class UpdateTransactionComponent implements OnInit {
     this.isLoading$ = combineLatest([this.transactionFacade.isLoading$, this.userFacade.isLoading$, this.categoryFacade.isLoading$]).pipe(
       map(([budgetIsLoading, userIsLoading, categoryIsLoading]) => budgetIsLoading || userIsLoading || categoryIsLoading)
     );
+
+    this.error$ = this.transactionFacade.error$;
 
     const transactionId = this.route.snapshot.paramMap.get('id');
 

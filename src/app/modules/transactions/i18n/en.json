@@ -103,6 +103,7 @@
       "occurredOn": {
         "required": "The date the transaction occurred on is required."
       },
+      "notFound": "The transaction you requested was not found.",
       "serverError": "Something went wrong while updating the transaction, please try again."
     }
   },
