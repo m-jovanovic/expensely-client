@@ -14,6 +14,7 @@ import { ConfirmationDialogService } from '@expensely/shared/services';
 export class BudgetDetailsComponent implements OnInit {
   budget$: Observable<BudgetDetailsResponse>;
   isLoading$: Observable<boolean>;
+  error$: Observable<boolean>;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,8 +26,8 @@ export class BudgetDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.budget$ = this.budgetFacade.budgetDetails$;
-
     this.isLoading$ = this.budgetFacade.isLoading$;
+    this.error$ = this.budgetFacade.error$;
 
     const budgetId = this.route.snapshot.paramMap.get('id');
 

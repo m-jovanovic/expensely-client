@@ -14,6 +14,9 @@
       "amount": "Amount",
       "startDate": "Start date",
       "endDate": "End date"
+    },
+    "errors": {
+      "notFound": "The requested budget was not found."
     }
   },
   "create": {

@@ -14,6 +14,9 @@
       "amount": "Iznos",
       "startDate": "Početni datum",
       "endDate": "Krajnji datum"
+    },
+    "errors": {
+      "notFound": "Budžet koji ste tražili nije pronađen."
     }
   },
   "create": {
