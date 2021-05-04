@@ -67,6 +67,7 @@
       "occurredOn": {
         "required": "Datum transakcije je neophodan."
       },
+      "notFound": "Transakcija koju ste tražili nije pronađena.",
       "serverError": "Nešto je krenulo naopako prilikom kreiranja transakcije, molimo pokušajte ponovo."
     }
   },
