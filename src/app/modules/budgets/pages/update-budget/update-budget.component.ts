@@ -32,6 +32,7 @@ export class UpdateBudgetComponent implements OnInit {
   currencies$: Observable<UserCurrencyResponse[]>;
   categories$: Observable<CategoryResponse[]>;
   isLoading$: Observable<boolean>;
+  error$: Observable<boolean>;
   submitted = false;
 
   constructor(
@@ -79,6 +80,8 @@ export class UpdateBudgetComponent implements OnInit {
     this.isLoading$ = combineLatest([this.budgetFacade.isLoading$, this.userFacade.isLoading$, this.categoryFacade.isLoading$]).pipe(
       map(([budgetIsLoading, userIsLoading, categoryIsLoading]) => budgetIsLoading || userIsLoading || categoryIsLoading)
     );
+
+    this.error$ = this.budgetFacade.error$;
 
     const budgetId = this.route.snapshot.paramMap.get('id');
 

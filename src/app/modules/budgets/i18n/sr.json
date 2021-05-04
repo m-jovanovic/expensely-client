@@ -92,6 +92,7 @@
         "required": "Krajnji datum je neophodan.",
         "endDateAfterStartDate": "Krajnji datum mora biti datum nakon početnog datuma."
       },
+      "notFound": "Budžet koji ste tražili nije pronađen.",
       "serverError": "Nešto je krenulo naopako prilikom ažuriranja budžeta, molimo pokušajte ponovo."
     }
   },

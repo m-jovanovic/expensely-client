@@ -92,6 +92,7 @@
         "required": "The end date is required.",
         "endDateAfterStartDate": "The end date must be a date after the start date."
       },
+      "notFound": "The requested budget was not found.",
       "serverError": "Something went wrong while updating the budget, please try again."
     }
   },
