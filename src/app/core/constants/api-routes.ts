@@ -9,7 +9,7 @@ export namespace ApiRoutes {
     public static readonly getUserCurrencies = 'users/{userId}/currencies';
     public static readonly addUserCurrency = 'users/{userId}/currencies/{currency}';
     public static readonly changeUserPrimaryCurrency = 'users/{userId}/currencies/{currency}/primary';
-    public static readonly changeUserTimeZone = 'users/{userId}/time-zone/{timeZoneId}';
+    public static readonly changeUserTimeZone = 'users/{userId}/time-zone?timeZoneId={timeZoneId}';
   }
 
   export class Budgets {
