@@ -3,6 +3,7 @@ export * from './authorization';
 export * from './language';
 export * from './category';
 export * from './currency';
+export * from './time-zone';
 export * from './transaction';
 export * from './transaction-list';
 export * from './transaction-summary';

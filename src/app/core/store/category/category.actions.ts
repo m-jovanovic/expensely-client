@@ -1,5 +1,5 @@
 export class LoadCategories {
-  public static readonly type = '[Categories] Load';
+  public static readonly type = '[Category] Load';
 
   constructor() {}
 }

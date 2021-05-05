@@ -9,7 +9,7 @@ import { CategoryService } from '../../services/category/category.service';
 import { ApiErrorResponse, CategoryResponse } from '../../contracts';
 
 @State<CategoryStateModel>({
-  name: 'categories',
+  name: 'category',
   defaults: {
     categories: [],
     isLoading: false

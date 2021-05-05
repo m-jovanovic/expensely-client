@@ -9,7 +9,7 @@ import { CurrencyService } from '../../services/currency/currency.service';
 import { ApiErrorResponse, CurrencyResponse } from '../../contracts';
 
 @State<CurrencyStateModel>({
-  name: 'currencies',
+  name: 'currency',
   defaults: {
     currencies: [],
     isLoading: false
