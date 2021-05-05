@@ -1,16 +1,21 @@
 {
   "text": {
-    "message": "You're almost ready! Before proceeding, please choose your primary currency."
+    "message": "You're almost ready! Before proceeding, we need some more information about you."
   },
   "actions": {
-    "selectPrimaryCurrency": "Select"
+    "select": "Select"
   },
   "fields": {
-    "currency": "Currency"
+    "currency": "Currency",
+    "timeZone": "Time Zone"
   },
   "errors": {
     "currency": {
       "required": "The currency is required."
-    }
+    },
+    "timeZone": {
+      "required": "The time zone is required."
+    },
+    "serverError": "Something went wrong while saving your information, please try again."
   }
 }

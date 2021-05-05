@@ -141,7 +141,7 @@ export class UpdateBudgetComponent implements OnInit {
     // TODO: Handle more specific errors when server-side functionality is implemented.
     if (errorResponse.hasErrors()) {
       this.notificationService.notify(
-        this.translationService.translate('budgets.update.error.serverError'),
+        this.translationService.translate('budgets.update.errors.serverError'),
         NotificationSettings.defaultTimeout
       );
     }

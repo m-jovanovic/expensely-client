@@ -1,20 +1,19 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
-import { CurrencyResponse } from '@expensely/core';
+import { TimeZoneResponse } from '@expensely/core';
 
 @Component({
-  selector: 'exp-setup-primary-currency',
-  templateUrl: './setup-primary-currency.component.html',
-  styleUrls: ['./setup-primary-currency.component.scss'],
+  selector: 'exp-setup-time-zone',
+  templateUrl: './setup-time-zone.component.html',
+  styleUrls: ['./setup-time-zone.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SetupPrimaryCurrencyComponent {
+export class SetupTimeZoneComponent {
   @Input()
   parentFormGroup: FormGroup;
 
   @Input()
-  currencies: CurrencyResponse[];
+  timeZones: TimeZoneResponse[];
 
   @Input()
   submitted: boolean;

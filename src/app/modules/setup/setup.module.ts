@@ -4,10 +4,10 @@ import { NgxsModule } from '@ngxs/store';
 import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
 import { SharedModule } from '@expensely/shared';
-import { AuthenticationState, CurrencyState, UserState } from '@expensely/core';
+import { AuthenticationState, CurrencyState, TimeZoneState, UserState } from '@expensely/core';
 import { SetupRoutingModule } from './setup-routing.module';
 import { SetupComponent } from './pages/setup/setup.component';
-import { SetupPrimaryCurrencyComponent } from './components/setup-primary-currency/setup-primary-currency.component';
+import { SetupPrimaryCurrencyComponent, SetupTimeZoneComponent } from './components';
 
 export const setupTranslationsLoader = ['en', 'sr'].reduce((acc, language) => {
   acc[language] = () => import(`./i18n/${language}.json`);
@@ -16,8 +16,13 @@ export const setupTranslationsLoader = ['en', 'sr'].reduce((acc, language) => {
 }, {});
 
 @NgModule({
-  declarations: [SetupComponent, SetupPrimaryCurrencyComponent],
-  imports: [SharedModule, ReactiveFormsModule, SetupRoutingModule, NgxsModule.forFeature([AuthenticationState, CurrencyState, UserState])],
+  declarations: [SetupComponent, SetupPrimaryCurrencyComponent, SetupTimeZoneComponent],
+  imports: [
+    SharedModule,
+    ReactiveFormsModule,
+    SetupRoutingModule,
+    NgxsModule.forFeature([AuthenticationState, CurrencyState, TimeZoneState, UserState])
+  ],
   providers: [
     {
       provide: TRANSLOCO_SCOPE,

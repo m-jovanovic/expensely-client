@@ -1,0 +1,20 @@
+<div *transloco="let t">
+  <div class="flex space-x-4 items-center" [formGroup]="parentFormGroup">
+    <label for="timeZone" class="w-32 font-medium text-gray-500">{{ t('setup.fields.timeZone') }}</label>
+    <select
+      id="timeZone"
+      name="timeZone"
+      formControlName="timeZone"
+      required
+      class="w-full border-transparent bg-transparent text-gray-500 rounded-md focus:border-teal-400 focus:ring-teal-400"
+    >
+      <option *ngFor="let timeZone of timeZones; let i = index" [value]="timeZone.id" [selected]="false">
+        {{ timeZone.name }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="submitted && parentFormGroup.controls.timeZone.errors" class="mt-2 text-sm text-red-500">
+    <div *ngIf="parentFormGroup.controls.timeZone.errors.required">{{ t('setup.errors.timeZone.required') }}</div>
+  </div>
+</div>

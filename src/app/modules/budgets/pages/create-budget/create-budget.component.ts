@@ -123,7 +123,7 @@ export class CreateBudgetComponent implements OnInit {
     // TODO: Handle more specific errors when server-side functionality is implemented.
     if (errorResponse.hasErrors()) {
       this.notificationService.notify(
-        this.translationService.translate('budgets.create.error.serverError'),
+        this.translationService.translate('budgets.create.errors.serverError'),
         NotificationSettings.defaultTimeout
       );
     }

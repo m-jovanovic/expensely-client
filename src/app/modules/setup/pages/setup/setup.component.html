@@ -1,3 +1,44 @@
 <div class="flex flex-col items-center">
-  <exp-setup-primary-currency></exp-setup-primary-currency>
+  <form trapFocus *transloco="let t" class="w-full sm:w-104 bg-white shadow-lg rounded" [formGroup]="setupForm" (ngSubmit)="onSubmit()">
+    <div class="flex flex-col">
+      <div class="px-4 sm:px-6 py-4 sm:py-6">
+        <div class="space-y-4">
+          <p class="text-gray-700">{{ t('setup.text.message') }}</p>
+
+          <!-- Currencies -->
+          <div>
+            <exp-setup-primary-currency
+              [submitted]="submitted"
+              [currencies]="currencies$ | async"
+              [parentFormGroup]="setupForm"
+            ></exp-setup-primary-currency>
+          </div>
+
+          <!-- Time zone -->
+          <div>
+            <exp-setup-time-zone
+              [submitted]="submitted"
+              [timeZones]="timeZones$ | async"
+              [parentFormGroup]="setupForm"
+            ></exp-setup-time-zone>
+          </div>
+
+          <!-- Submit form -->
+          <button
+            type="submit"
+            [disabled]="requestSent"
+            class="w-full flex items-center justify-center space-x-4 py-2 px-4 rounded font-bold bg-teal-500 hover:bg-teal-600 text-white focus:outline-none focus:bg-teal-600 disabled"
+          >
+            <span>
+              {{ t('setup.actions.select') }}
+            </span>
+
+            <div *ngIf="requestSent" class="flex items-center justify-center">
+              <exp-spinner class="w-6 h-6"></exp-spinner>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

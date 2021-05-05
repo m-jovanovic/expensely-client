@@ -1,16 +1,21 @@
 {
   "text": {
-    "message": "Skoro ste spremni! Pre nego što nastavite, odaberite svoju primarnu valutu."
+    "message": "Skoro ste spremni! Pre nego što nastavite, potrebno nam je još par informacija o tebi."
   },
   "actions": {
-    "selectPrimaryCurrency": "Izaberi"
+    "select": "Izaberi"
   },
   "fields": {
-    "currency": "Valuta"
+    "currency": "Valuta",
+    "timeZone": "Vremenska zona"
   },
   "errors": {
     "currency": {
       "required": "Valuta je neophodna."
-    }
+    },
+    "timeZone": {
+      "required": "Vremenska zona je neophodna."
+    },
+    "serverError": "Nešto je krenulo naopako prilikom čuvanja tvojih informacija, molimo pokušajte ponovo."
   }
 }
