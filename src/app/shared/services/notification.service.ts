@@ -51,7 +51,18 @@ export class NotificationService {
 
     const domElement = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
 
-    document.getElementsByTagName('main').item(0).appendChild(domElement);
+    // Try to find the 'main' tag which is in the DOM in the main layout, otherwise fallback to looking for a 'div'.
+    const tagsToSearchFor: string[] = ['main', 'div'];
+
+    for (let i = 0; i < tagsToSearchFor.length; i++) {
+      const elementsByTagName = document.getElementsByTagName(tagsToSearchFor[i]);
+
+      if (elementsByTagName.length > 0) {
+        elementsByTagName.item(0).appendChild(domElement);
+
+        break;
+      }
+    }
   }
 
   private removeNotificationDialogFromViewOnClose(componentRef: ComponentRef<NotificationDialogComponent>, timeout?: number): void {
