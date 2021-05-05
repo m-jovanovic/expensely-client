@@ -43,7 +43,7 @@ export class AuthenticationFacade {
   }
 
   get userPermissions(): Permission[] | null {
-    return this.store.selectSnapshot(AuthenticationSelectors.getPermissions);
+    return this.store.selectSnapshot(AuthenticationSelectors.getUserPermissions);
   }
 
   get userInitials(): string | null {
@@ -52,5 +52,9 @@ export class AuthenticationFacade {
 
   get userPrimaryCurrency(): number {
     return this.store.selectSnapshot(AuthenticationSelectors.getUserPrimaryCurrency);
+  }
+
+  get userIsSetupComplete(): boolean {
+    return this.store.selectSnapshot(AuthenticationSelectors.getUserIsSetupComplete);
   }
 }

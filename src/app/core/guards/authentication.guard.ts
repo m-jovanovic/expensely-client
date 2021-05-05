@@ -45,7 +45,7 @@ export class AuthenticationGuard implements CanActivate, CanLoad {
     }
 
     if (isLoggedIn) {
-      await this.navigateToSetupIfUserDidNotChoosePrimaryCurrency(url);
+      await this.navigateToSetupIfSetupIsNotComplete(url);
 
       return true;
     }
@@ -63,8 +63,8 @@ export class AuthenticationGuard implements CanActivate, CanLoad {
     }
   }
 
-  private async navigateToSetupIfUserDidNotChoosePrimaryCurrency(url: string): Promise<boolean> {
-    if (!url.includes('setup') && this.authenticationFacade.userPrimaryCurrency <= 0) {
+  private async navigateToSetupIfSetupIsNotComplete(url: string): Promise<boolean> {
+    if (!url.includes('setup') && !this.authenticationFacade.userIsSetupComplete) {
       return await this.routerService.navigateByUrl('/setup');
     }
 

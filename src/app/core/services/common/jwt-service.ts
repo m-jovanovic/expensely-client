@@ -15,6 +15,7 @@ export class JwtService {
         userId: decodedToken.sub,
         email: decodedToken.email,
         fullName: decodedToken.full_name,
+        isSetupComplete: decodedToken.is_setup_complete === 'True',
         primaryCurrency: +decodedToken.primary_currency,
         permissions: Array.isArray(decodedToken.permissions)
           ? Array.from(decodedToken.permissions).map((x) => x as Permission)

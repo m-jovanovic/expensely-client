@@ -27,13 +27,18 @@ export class AuthenticationSelectors {
   }
 
   @Selector([AuthenticationSelectors.getTokenInfo])
-  static getPermissions(tokenInfo: TokenInfo): Permission[] {
+  static getUserPermissions(tokenInfo: TokenInfo): Permission[] {
     return tokenInfo?.permissions;
   }
 
   @Selector([AuthenticationSelectors.getTokenInfo])
   static getUserId(tokenInfo: TokenInfo): string {
     return tokenInfo.userId;
+  }
+
+  @Selector([AuthenticationSelectors.getTokenInfo])
+  static getUserIsSetupComplete(tokenInfo: TokenInfo): boolean {
+    return tokenInfo.isSetupComplete;
   }
 
   @Selector([AuthenticationSelectors.getTokenInfo])
