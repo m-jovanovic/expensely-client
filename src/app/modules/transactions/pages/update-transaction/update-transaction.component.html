@@ -165,7 +165,7 @@
   </div>
 
   <!-- Transaction not found -->
-  <div *ngIf="data.error" class="flex justify-center w-full relative">
+  <div *ngIf="!data.transaction && data.error" class="flex justify-center w-full relative">
     <div *transloco="let t" class="bg-white shadow-lg rounded-lg w-full md:max-w-2xl divide-y divide-gray-200">
       <div class="px-6 py-6 flex justify-between">
         <h3 class="text-lg font-medium text-gray-700">{{ t('transactions.update.text.title') }}</h3>
