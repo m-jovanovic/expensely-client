@@ -27,6 +27,6 @@ export class UserService extends ApiService {
   }
 
   changeUserTimeZone(userId: string, timeZoneId: string): Observable<any> {
-    return this.put(ApiRoutes.Users.changeUserTimeZone.replace('{userId}', userId).replace('{timeZoneId}', timeZoneId));
+    return this.put(ApiRoutes.Users.changeUserTimeZone.replace('{userId}', userId).replace('{timeZoneId}', encodeURIComponent(timeZoneId)));
   }
 }
