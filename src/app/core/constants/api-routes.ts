@@ -37,4 +37,8 @@ export namespace ApiRoutes {
   export class Currencies {
     public static readonly getCurrencies = 'currencies';
   }
+
+  export class TimeZones {
+    public static readonly getTimeZones = 'time-zones';
+  }
 }
