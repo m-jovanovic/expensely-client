@@ -15,3 +15,9 @@ export class ChangeUserPrimaryCurrency {
 
   constructor(public userId: string, public currency: number) {}
 }
+
+export class ChangeUserTimeZone {
+  public static readonly type = '[User] Change Time Zone';
+
+  constructor(public userId: string, public timeZoneId: string) {}
+}

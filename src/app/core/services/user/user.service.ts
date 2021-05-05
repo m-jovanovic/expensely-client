@@ -25,4 +25,8 @@ export class UserService extends ApiService {
   changeUserPrimaryCurrency(userId: string, currency: number): Observable<any> {
     return this.put(ApiRoutes.Users.changeUserPrimaryCurrency.replace('{userId}', userId).replace('{currency}', currency.toString()));
   }
+
+  changeUserTimeZone(userId: string, timeZoneId: string): Observable<any> {
+    return this.put(ApiRoutes.Users.changeUserTimeZone.replace('{userId}', userId).replace('{timeZoneId}', timeZoneId));
+  }
 }

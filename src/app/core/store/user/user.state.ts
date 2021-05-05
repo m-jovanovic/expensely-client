@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { initialState, UserStateModel } from './user-state.model';
-import { LoadUserCurrencies, AddUserCurrency, ChangeUserPrimaryCurrency } from './user.actions';
+import { LoadUserCurrencies, AddUserCurrency, ChangeUserPrimaryCurrency, ChangeUserTimeZone } from './user.actions';
 import { UserService } from '../../../core/services';
 import { ApiErrorResponse, UserCurrencyResponse } from '../../contracts';
 
@@ -70,6 +70,29 @@ export class UserState {
     });
 
     return this.userService.changeUserPrimaryCurrency(action.userId, action.currency).pipe(
+      tap(() => {
+        context.patchState({
+          isLoading: false
+        });
+      }),
+      catchError((error: ApiErrorResponse) => {
+        context.patchState({
+          isLoading: false,
+          error: true
+        });
+
+        return throwError(error);
+      })
+    );
+  }
+
+  @Action(ChangeUserTimeZone)
+  changeUserTimeZone(context: StateContext<UserStateModel>, action: ChangeUserTimeZone): Observable<any> {
+    context.patchState({
+      isLoading: true
+    });
+
+    return this.userService.changeUserTimeZone(action.userId, action.timeZoneId).pipe(
       tap(() => {
         context.patchState({
           isLoading: false
