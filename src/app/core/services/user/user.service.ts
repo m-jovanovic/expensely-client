@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ApiRoutes } from '../../constants/api-routes';
 import { ApiService } from '../api/api.service';
-import { UserCurrencyResponse } from '../../contracts/users';
+import { SetupUserRequest, UserCurrencyResponse } from '../../contracts/users';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,9 @@ export class UserService extends ApiService {
 
   changeUserTimeZone(userId: string, timeZoneId: string): Observable<any> {
     return this.put(ApiRoutes.Users.changeUserTimeZone.replace('{userId}', userId).replace('{timeZoneId}', encodeURIComponent(timeZoneId)));
+  }
+
+  setupUser(userId: string, request: SetupUserRequest): Observable<any> {
+    return this.put(ApiRoutes.Users.setupUser.replace('{userId}', userId), request);
   }
 }

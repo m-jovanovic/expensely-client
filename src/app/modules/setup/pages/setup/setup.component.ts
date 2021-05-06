@@ -80,9 +80,8 @@ export class SetupComponent implements OnInit {
     this.setupForm.disable();
 
     this.userFacade
-      .addUserCurrency(this.setupForm.value.currency)
+      .setupUser(this.setupForm.value.currency, this.setupForm.value.timeZone)
       .pipe(
-        concatMap(() => this.userFacade.changeUserTimeZone(this.setupForm.value.timeZone)),
         concatMap(() => this.authenticationFacade.refreshToken()),
         finalize(() => {
           this.submitted = false;

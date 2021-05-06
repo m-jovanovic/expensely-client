@@ -10,6 +10,7 @@ export namespace ApiRoutes {
     public static readonly addUserCurrency = 'users/{userId}/currencies/{currency}';
     public static readonly changeUserPrimaryCurrency = 'users/{userId}/currencies/{currency}/primary';
     public static readonly changeUserTimeZone = 'users/{userId}/time-zone?timeZoneId={timeZoneId}';
+    public static readonly setupUser = 'users/{userId}/setup';
   }
 
   export class Budgets {

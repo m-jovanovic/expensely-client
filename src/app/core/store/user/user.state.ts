@@ -4,9 +4,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { initialState, UserStateModel } from './user-state.model';
-import { LoadUserCurrencies, AddUserCurrency, ChangeUserPrimaryCurrency, ChangeUserTimeZone } from './user.actions';
+import { LoadUserCurrencies, AddUserCurrency, ChangeUserPrimaryCurrency, ChangeUserTimeZone, SetupUser } from './user.actions';
 import { UserService } from '../../../core/services';
-import { ApiErrorResponse, UserCurrencyResponse } from '../../contracts';
+import { ApiErrorResponse, SetupUserRequest, UserCurrencyResponse } from '../../contracts';
 
 @State<UserStateModel>({
   name: 'user',
@@ -93,6 +93,29 @@ export class UserState {
     });
 
     return this.userService.changeUserTimeZone(action.userId, action.timeZoneId).pipe(
+      tap(() => {
+        context.patchState({
+          isLoading: false
+        });
+      }),
+      catchError((error: ApiErrorResponse) => {
+        context.patchState({
+          isLoading: false,
+          error: true
+        });
+
+        return throwError(error);
+      })
+    );
+  }
+
+  @Action(SetupUser)
+  setupUser(context: StateContext<UserStateModel>, action: SetupUser): Observable<any> {
+    context.patchState({
+      isLoading: true
+    });
+
+    return this.userService.setupUser(action.userId, new SetupUserRequest(action.currency, action.timeZoneId)).pipe(
       tap(() => {
         context.patchState({
           isLoading: false

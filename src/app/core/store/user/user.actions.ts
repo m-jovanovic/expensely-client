@@ -21,3 +21,9 @@ export class ChangeUserTimeZone {
 
   constructor(public userId: string, public timeZoneId: string) {}
 }
+
+export class SetupUser {
+  public static readonly type = '[User] Setup';
+
+  constructor(public userId: string, public currency: number, public timeZoneId: string) {}
+}

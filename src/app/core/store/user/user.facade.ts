@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { AuthenticationFacade } from '../authentication';
 import { UserSelectors } from './user.selectors';
-import { AddUserCurrency, ChangeUserPrimaryCurrency, ChangeUserTimeZone, LoadUserCurrencies } from './user.actions';
+import { AddUserCurrency, ChangeUserPrimaryCurrency, ChangeUserTimeZone, LoadUserCurrencies, SetupUser } from './user.actions';
 import { UserCurrencyResponse } from '../../contracts/users';
 
 @Injectable({
@@ -33,5 +33,9 @@ export class UserFacade {
 
   changeUserTimeZone(timeZoneId: string): Observable<any> {
     return this.store.dispatch(new ChangeUserTimeZone(this.authenticationFacade.userId, timeZoneId));
+  }
+
+  setupUser(currency: number, timeZoneId: string): Observable<any> {
+    return this.store.dispatch(new SetupUser(this.authenticationFacade.userId, currency, timeZoneId));
   }
 }
